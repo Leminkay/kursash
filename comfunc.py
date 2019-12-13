@@ -29,3 +29,28 @@ def ext_gcd(a,b):
     if y1 < 0:
         y1 = y1 + ta
     return (a, x1, y1)
+
+def text_to_num(s):
+    num = 0;
+    for i in s:
+        num <<= 8
+        num += ord(i)
+    return num
+
+def add_rand_bits(num, cnt):
+    num<<=cnt
+    num += random.randint(2**cnt,2**(cnt + 1) - 1)
+    return num
+
+def remove_rand_bits(num, cnt):
+    num >>= cnt
+    num -= 1
+    return num
+
+def num_to_text(num):
+    s = ''
+    while num != 0:
+        s += str(chr((num % ( 2**8))))
+        num = num//(2**8)
+    s = s[len(s)::-1]
+    return s

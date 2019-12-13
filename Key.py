@@ -45,7 +45,7 @@ class Key(object):
 
     
     def GetPrivateKey(self):
-        return self._d,self._n
+        return self._d,self._n,self._q,self._p
 
 
 if __name__ == '__main__':
