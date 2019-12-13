@@ -15,25 +15,28 @@ def ftest(x): #using fermat 100 times
 def rmtest(x): # rabin-miller test
     if x == 2:
         return True
-    if x % 2 == 0:
+    if x % 2 == 0 or x < 2:
         return False
     
     n = x - 1
     s = 0
     while n % 2 == 0:
-        n /= 2
+        n >>= 1
         s += 1
-    n = int(n)
-    k = 5
+    
+    k = 10
     
     for i in range(k):
         
-        a = random.randint(1, x - 1)
+        a = random.randint(2, x - 2)
         t = pow(a, n, x)
         
         if t == 1 or t == x - 1:
             continue
+
+        
         flag = 0
+        
         for j in range(s - 1):
             t = pow(t, 2 ,x)
 
