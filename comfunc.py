@@ -69,6 +69,9 @@ def ext_gcd(a,b):
         y1 = y1 + ta
     return (a, x1, y1)
 
+def gcd(a, b):
+    return gcd(b, a % b) if b != 0 else a
+
 def text_to_num(s):
     num = 0;
     for i in s:
