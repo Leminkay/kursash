@@ -49,4 +49,30 @@ def speed_test():
     print("for frm test: ", rm_timer / t)
     print("for rsa lib test: ", l_timer / t) 
 
-speed_test()
+print("Input key bit key length")
+bitl = int(input())
+
+key = Key()
+
+key.GenerateKeysRM(bitl//2)
+
+(e, n) = key.GetPublicKey()
+(d, n, q, p) = key.GetPrivateKey()
+
+print("Input message") # bit length should be less than key lenght
+m = input()
+
+nm = comfunc.text_to_num(m)
+rndb =5
+nm = comfunc.add_rand_bits(nm, rndb)
+
+crypt = pow(nm, e, n)
+print("Encrypted message: ", crypt)
+
+decr = pow(crypt, d, n)
+decr = comfunc.remove_rand_bits(decr, rndb)
+
+mes = comfunc.num_to_text(decr)
+
+print("And decrypted: ", mes)
+
