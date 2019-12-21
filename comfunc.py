@@ -72,6 +72,20 @@ def ext_gcd(a,b):
 def gcd(a, b):
     return gcd(b, a % b) if b != 0 else a
 
+
+def next_prime_rm(x):
+    if x % 2 == 0:
+        x += 1
+    while rmtest(x) == False:
+        x += 2
+    return x
+def next_prime_f(x):
+    if x % 2 == 0:
+        x += 1
+    while ftest(x) == False:
+        x += 2
+    return x
+
 def text_to_num(s):
     num = 0;
     for i in s:
